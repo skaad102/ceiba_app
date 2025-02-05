@@ -27,4 +27,11 @@ class HomeViewModel extends FormViewModel with $HomeView {
         .toList();
     notifyListeners();
   }
+
+  @override
+  void dispose() {
+    searchUserController.dispose();
+    searchUserFocusNode.dispose();
+    super.dispose();
+  }
 }

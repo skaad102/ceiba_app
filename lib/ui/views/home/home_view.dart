@@ -47,12 +47,15 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
               ),
               verticalSpaceMedium,
               Expanded(
-                child: SizedBox(
-                  height: 500,
-                  child: viewModel.serarchUsers &&
-                          searchUserController.text.isNotEmpty
-                      ? listUsers(viewModel.usersFiltered)
-                      : listUsers(viewModel.users),
+                child: GestureDetector(
+                  onTap: () => FocusScope.of(context).unfocus(),
+                  child: SizedBox(
+                    height: 500,
+                    child: viewModel.serarchUsers &&
+                            searchUserController.text.isNotEmpty
+                        ? listUsers(viewModel.usersFiltered)
+                        : listUsers(viewModel.users),
+                  ),
                 ),
               ),
             ],
