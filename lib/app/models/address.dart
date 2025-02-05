@@ -1,6 +1,7 @@
 import 'package:ceiba_app/app/models/geo.dart';
 import 'package:hive/hive.dart';
 part 'address.g.dart';
+
 @HiveType(typeId: 2)
 class AddressDTO {
   @HiveField(0)

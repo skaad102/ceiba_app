@@ -1,3 +1,5 @@
+import 'package:ceiba_app/ui/widgets/common/text_text_field/text_text_field.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:ceiba_app/ui/common/app_colors.dart';
@@ -15,15 +17,26 @@ class HomeView extends StackedView<HomeViewModel> {
     Widget? child,
   ) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Prueba de ingreso',
+          style: TextStyle(color: kcLightGrey),
+        ),
+        backgroundColor: kcPrimaryColor,
+      ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+        child: Container(
+          color: kcLightGrey,
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                verticalSpaceLarge,
+                TextFieldBase(
+                  controller: viewModel.controllerSearch,
+                  labelText: 'Buscar Usuario',
+                ),
                 Column(
                   children: [
                     const Text(
@@ -34,40 +47,11 @@ class HomeView extends StackedView<HomeViewModel> {
                       ),
                     ),
                     verticalSpaceMedium,
-                    MaterialButton(
-                      color: Colors.black,
-                      onPressed: viewModel.incrementCounter,
-                      child: Text(
-                        viewModel.counterLabel,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    MaterialButton(
-                      color: kcDarkGreyColor,
-                      onPressed: viewModel.showDialog,
-                      child: const Text(
-                        'Show Dialog',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    MaterialButton(
-                      color: kcDarkGreyColor,
-                      onPressed: viewModel.showBottomSheet,
-                      child: const Text(
-                        'Show Bottom Sheet',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
+                Container(
+                  height: 200,
+                  color: kcVeryLightGrey,
                 )
               ],
             ),
