@@ -49,7 +49,8 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
               Expanded(
                 child: SizedBox(
                   height: 500,
-                  child: viewModel.serarchUsers && searchUserController.text.isNotEmpty
+                  child: viewModel.serarchUsers &&
+                          searchUserController.text.isNotEmpty
                       ? listUsers(viewModel.usersFiltered)
                       : listUsers(viewModel.users),
                 ),
@@ -64,7 +65,11 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
   Widget listUsers(List<UserDTO> users) {
     if (users.isEmpty) {
       return const Center(
-        child: Text('No hay usuarios'),
+        child: Text('List is empty',
+            style: TextStyle(
+                color: kcPrimaryColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold)),
       );
     }
     return ListView.separated(
