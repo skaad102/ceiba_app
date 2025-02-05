@@ -4,6 +4,9 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:ceiba_app/ui/dialogs/info/info_dialog.dart';
 import 'package:ceiba_app/ui/bottom_sheets/info/info_sheet.dart';
+import 'package:ceiba_app/services/backend_api_service.dart';
+import 'package:ceiba_app/services/users_service.dart';
+import 'package:ceiba_app/services/local_data_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -16,7 +19,10 @@ import 'package:ceiba_app/ui/bottom_sheets/info/info_sheet.dart';
     LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
-    // @stacked-service
+    LazySingleton(classType: BackendApiService),
+    LazySingleton(classType: UsersService),
+    LazySingleton(classType: LocalDataService),
+// @stacked-service
   ],
   bottomsheets: [
     StackedBottomsheet(classType: InfoSheet),

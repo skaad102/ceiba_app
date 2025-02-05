@@ -2,6 +2,9 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:ceiba_app/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:ceiba_app/services/backend_api_service.dart';
+import 'package:ceiba_app/services/users_service.dart';
+import 'package:ceiba_app/services/local_data_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -10,13 +13,19 @@ import 'test_helpers.mocks.dart';
   MockSpec<NavigationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<BottomSheetService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
-  // @stacked-mock-spec
+  MockSpec<BackendApiService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<UsersService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<LocalDataService>(onMissingStub: OnMissingStub.returnDefault),
+// @stacked-mock-spec
 ])
 void registerServices() {
   getAndRegisterNavigationService();
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
-  // @stacked-mock-register
+  getAndRegisterBackendApiService();
+  getAndRegisterUsersService();
+  getAndRegisterLocalDataService();
+// @stacked-mock-register
 }
 
 MockNavigationService getAndRegisterNavigationService() {
@@ -69,6 +78,26 @@ MockDialogService getAndRegisterDialogService() {
   return service;
 }
 
+MockBackendApiService getAndRegisterBackendApiService() {
+  _removeRegistrationIfExists<BackendApiService>();
+  final service = MockBackendApiService();
+  locator.registerSingleton<BackendApiService>(service);
+  return service;
+}
+
+MockUsersService getAndRegisterUsersService() {
+  _removeRegistrationIfExists<UsersService>();
+  final service = MockUsersService();
+  locator.registerSingleton<UsersService>(service);
+  return service;
+}
+
+MockLocalDataService getAndRegisterLocalDataService() {
+  _removeRegistrationIfExists<LocalDataService>();
+  final service = MockLocalDataService();
+  locator.registerSingleton<LocalDataService>(service);
+  return service;
+}
 // @stacked-mock-create
 
 void _removeRegistrationIfExists<T extends Object>() {
