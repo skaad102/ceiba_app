@@ -10,15 +10,14 @@ class BackendApiService {
     'Accept': 'application/json',
   };
 
-  String backendServer = 'https://jsonplaceholder.typicode.com/';
+  String backendServer = 'jsonplaceholder.typicode.com';
 
   Future<dynamic> get(
     String path, {
     Map<String, String>? queryParameters,
     Map<String, String> headers = const <String, String>{},
-    bool authenticated = true,
   }) async {
-    final uri = Uri.http(backendServer, path, queryParameters);
+    final uri = Uri.http(backendServer, '/$path', queryParameters);
     final response = await http
         .get(
           uri,
