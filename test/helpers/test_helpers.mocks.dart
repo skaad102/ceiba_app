@@ -727,7 +727,6 @@ class MockBackendApiService extends _i1.Mock implements _i7.BackendApiService {
     String? path, {
     Map<String, String>? queryParameters,
     Map<String, String>? headers = const {},
-    bool? authenticated = true,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -736,7 +735,6 @@ class MockBackendApiService extends _i1.Mock implements _i7.BackendApiService {
           {
             #queryParameters: queryParameters,
             #headers: headers,
-            #authenticated: authenticated,
           },
         ),
         returnValue: _i5.Future<dynamic>.value(),
@@ -767,6 +765,43 @@ class MockUsersService extends _i1.Mock implements _i8.UsersService {
         Invocation.method(
           #fetchUsers,
           [],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> init() => (super.noSuchMethod(
+        Invocation.method(
+          #init,
+          [],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> initAdapter() => (super.noSuchMethod(
+        Invocation.method(
+          #initAdapter,
+          [],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> saveUsersLocal(
+    String? id,
+    _i9.UserDTO? user,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveUsersLocal,
+          [
+            id,
+            user,
+          ],
         ),
         returnValue: _i5.Future<void>.value(),
         returnValueForMissingStub: _i5.Future<void>.value(),

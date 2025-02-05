@@ -1,13 +1,18 @@
+import 'package:ceiba_app/ui/widgets/common/card_user/card_user.dart';
 import 'package:ceiba_app/ui/widgets/common/text_text_field/text_text_field.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:ceiba_app/ui/common/app_colors.dart';
 import 'package:ceiba_app/ui/common/ui_helpers.dart';
+import 'package:stacked/stacked_annotations.dart';
 
+import 'home_view.form.dart';
 import 'home_viewmodel.dart';
 
-class HomeView extends StackedView<HomeViewModel> {
+@FormView(fields: [
+  FormTextField(name: 'searchUser'),
+])
+class HomeView extends StackedView<HomeViewModel> with $HomeView {
   const HomeView({Key? key}) : super(key: key);
 
   @override
@@ -28,33 +33,30 @@ class HomeView extends StackedView<HomeViewModel> {
         child: Container(
           color: kcLightGrey,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextFieldBase(
-                  controller: viewModel.controllerSearch,
-                  labelText: 'Buscar Usuario',
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextFieldBase(
+                controller: viewModel.controllerSearch,
+                labelText: 'Buscar Usuario',
+              ),
+              verticalSpaceMedium,
+              Expanded(
+                child: SizedBox(
+                  height: 500,
+                  child: ListView.separated(
+                    padding: const EdgeInsets.only(bottom: 24),
+                    shrinkWrap: true,
+                    itemCount: viewModel.users.length,
+                    itemBuilder: (context, index) {
+                      return CardUser(user: viewModel.users[index]);
+                    },
+                    separatorBuilder: (_, __) => verticalSpaceMedium,
+                  ),
                 ),
-                Column(
-                  children: [
-                    const Text(
-                      'Hello, STACKED!',
-                      style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    verticalSpaceMedium,
-                  ],
-                ),
-                Container(
-                  height: 200,
-                  color: kcVeryLightGrey,
-                )
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
