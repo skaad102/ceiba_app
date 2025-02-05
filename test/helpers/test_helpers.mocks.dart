@@ -9,6 +9,7 @@ import 'dart:ui' as _i6;
 import 'package:ceiba_app/app/models/user.dart' as _i9;
 import 'package:ceiba_app/services/backend_api_service.dart' as _i7;
 import 'package:ceiba_app/services/local_data_service.dart' as _i10;
+import 'package:ceiba_app/services/posts_service.dart' as _i12;
 import 'package:ceiba_app/services/users_service.dart' as _i8;
 import 'package:flutter/material.dart' as _i4;
 import 'package:hive/hive.dart' as _i11;
@@ -950,3 +951,8 @@ class MockLocalDataService extends _i1.Mock implements _i10.LocalDataService {
         returnValueForMissingStub: _i5.Future<void>.value(),
       ) as _i5.Future<void>);
 }
+
+/// A class which mocks [PostsService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockPostsService extends _i1.Mock implements _i12.PostsService {}

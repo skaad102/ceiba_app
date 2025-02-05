@@ -5,6 +5,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:ceiba_app/services/backend_api_service.dart';
 import 'package:ceiba_app/services/users_service.dart';
 import 'package:ceiba_app/services/local_data_service.dart';
+import 'package:ceiba_app/services/posts_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -16,6 +17,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<BackendApiService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<UsersService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<LocalDataService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<PostsService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -25,6 +27,7 @@ void registerServices() {
   getAndRegisterBackendApiService();
   getAndRegisterUsersService();
   getAndRegisterLocalDataService();
+  getAndRegisterPostsService();
 // @stacked-mock-register
 }
 
@@ -96,6 +99,13 @@ MockLocalDataService getAndRegisterLocalDataService() {
   _removeRegistrationIfExists<LocalDataService>();
   final service = MockLocalDataService();
   locator.registerSingleton<LocalDataService>(service);
+  return service;
+}
+
+MockPostsService getAndRegisterPostsService() {
+  _removeRegistrationIfExists<PostsService>();
+  final service = MockPostsService();
+  locator.registerSingleton<PostsService>(service);
   return service;
 }
 // @stacked-mock-create
