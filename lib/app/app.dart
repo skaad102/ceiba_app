@@ -7,13 +7,16 @@ import 'package:ceiba_app/ui/bottom_sheets/info/info_sheet.dart';
 import 'package:ceiba_app/services/backend_api_service.dart';
 import 'package:ceiba_app/services/users_service.dart';
 import 'package:ceiba_app/services/local_data_service.dart';
+import 'package:ceiba_app/ui/views/user_post/user_post_view.dart';
+import 'package:ceiba_app/services/posts_service.dart';
 // @stacked-import
 
 @StackedApp(
   routes: [
     MaterialRoute(page: HomeView),
     MaterialRoute(page: StartupView),
-    // @stacked-route
+    MaterialRoute(page: UserPostView),
+// @stacked-route
   ],
   dependencies: [
     LazySingleton(classType: BottomSheetService),
@@ -22,6 +25,7 @@ import 'package:ceiba_app/services/local_data_service.dart';
     LazySingleton(classType: BackendApiService),
     LazySingleton(classType: UsersService),
     LazySingleton(classType: LocalDataService),
+    LazySingleton(classType: PostsService),
 // @stacked-service
   ],
   bottomsheets: [

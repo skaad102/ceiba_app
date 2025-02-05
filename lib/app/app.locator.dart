@@ -13,6 +13,7 @@ import 'package:stacked_shared/stacked_shared.dart';
 
 import '../services/backend_api_service.dart';
 import '../services/local_data_service.dart';
+import '../services/posts_service.dart';
 import '../services/users_service.dart';
 
 final locator = StackedLocator.instance;
@@ -32,4 +33,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => BackendApiService());
   locator.registerLazySingleton(() => UsersService());
   locator.registerLazySingleton(() => LocalDataService());
+  locator.registerLazySingleton(() => PostsService());
 }
