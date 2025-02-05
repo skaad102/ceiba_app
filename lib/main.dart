@@ -1,3 +1,4 @@
+import 'package:ceiba_app/ui/common/theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:ceiba_app/app/app.bottomsheets.dart';
 import 'package:ceiba_app/app/app.dialogs.dart';
@@ -19,6 +20,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeApp.themeData,
       initialRoute: Routes.startupView,
       onGenerateRoute: StackedRouter().onGenerateRoute,
       navigatorKey: StackedService.navigatorKey,
