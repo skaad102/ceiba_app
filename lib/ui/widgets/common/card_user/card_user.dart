@@ -62,7 +62,9 @@ class CardUser extends StackedView<CardUserModel> {
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
-                onPressed: () {}, child: const Text("VER PUBLICACIONES")),
+              onPressed: () => viewModel.navigateToUserDetail(user),
+              child: const Text("VER PUBLICACIONES"),
+            ),
           )
         ],
       ),
