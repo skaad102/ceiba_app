@@ -1,3 +1,4 @@
+import 'package:ceiba_app/app/models/user.dart';
 import 'package:ceiba_app/ui/widgets/common/card_user/card_user.dart';
 import 'package:ceiba_app/ui/widgets/common/text_text_field/text_text_field.dart';
 import 'package:flutter/material.dart';
@@ -38,22 +39,19 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextFieldBase(
-                controller: viewModel.controllerSearch,
+                controller: searchUserController,
                 labelText: 'Buscar Usuario',
+                onChanged: (value) {
+                  viewModel.onSearchTap(value);
+                },
               ),
               verticalSpaceMedium,
               Expanded(
                 child: SizedBox(
                   height: 500,
-                  child: ListView.separated(
-                    padding: const EdgeInsets.only(bottom: 24),
-                    shrinkWrap: true,
-                    itemCount: viewModel.users.length,
-                    itemBuilder: (context, index) {
-                      return CardUser(user: viewModel.users[index]);
-                    },
-                    separatorBuilder: (_, __) => verticalSpaceMedium,
-                  ),
+                  child: viewModel.serarchUsers && searchUserController.text.isNotEmpty
+                      ? listUsers(viewModel.usersFiltered)
+                      : listUsers(viewModel.users),
                 ),
               ),
             ],
@@ -63,9 +61,32 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
     );
   }
 
+  Widget listUsers(List<UserDTO> users) {
+    if (users.isEmpty) {
+      return const Center(
+        child: Text('No hay usuarios'),
+      );
+    }
+    return ListView.separated(
+      padding: const EdgeInsets.only(bottom: 24),
+      shrinkWrap: true,
+      itemCount: users.length,
+      itemBuilder: (context, index) {
+        return CardUser(user: users[index]);
+      },
+      separatorBuilder: (_, __) => verticalSpaceMedium,
+    );
+  }
+
   @override
   HomeViewModel viewModelBuilder(
     BuildContext context,
   ) =>
       HomeViewModel();
+
+  @override
+  void onViewModelReady(HomeViewModel viewModel) {
+    super.onViewModelReady(viewModel);
+    syncFormWithViewModel(viewModel);
+  }
 }

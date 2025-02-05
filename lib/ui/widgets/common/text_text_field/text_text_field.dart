@@ -7,8 +7,12 @@ import 'text_text_field_model.dart';
 class TextFieldBase extends StackedView<TextTextFieldModel> {
   final TextEditingController controller;
   final String labelText;
+  final void Function(String)? onChanged;
   const TextFieldBase(
-      {required this.controller, required this.labelText, super.key});
+      {required this.controller,
+      required this.labelText,
+      this.onChanged,
+      super.key});
 
   @override
   Widget builder(
@@ -20,6 +24,7 @@ class TextFieldBase extends StackedView<TextTextFieldModel> {
       height: 48,
       child: TextField(
         controller: controller,
+        onChanged: onChanged,
         decoration: InputDecoration(
           border: const UnderlineInputBorder(
             borderSide: BorderSide(
