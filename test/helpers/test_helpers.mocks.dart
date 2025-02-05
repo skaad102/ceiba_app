@@ -6,10 +6,12 @@
 import 'dart:async' as _i5;
 import 'dart:ui' as _i6;
 
+import 'package:ceiba_app/app/models/user.dart' as _i9;
 import 'package:ceiba_app/services/backend_api_service.dart' as _i7;
-import 'package:ceiba_app/services/local_data_service.dart' as _i9;
+import 'package:ceiba_app/services/local_data_service.dart' as _i10;
 import 'package:ceiba_app/services/users_service.dart' as _i8;
 import 'package:flutter/material.dart' as _i4;
+import 'package:hive/hive.dart' as _i11;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i3;
 import 'package:stacked_services/stacked_services.dart' as _i2;
@@ -745,9 +747,171 @@ class MockBackendApiService extends _i1.Mock implements _i7.BackendApiService {
 /// A class which mocks [UsersService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUsersService extends _i1.Mock implements _i8.UsersService {}
+class MockUsersService extends _i1.Mock implements _i8.UsersService {
+  @override
+  List<_i9.UserDTO> get users => (super.noSuchMethod(
+        Invocation.getter(#users),
+        returnValue: <_i9.UserDTO>[],
+        returnValueForMissingStub: <_i9.UserDTO>[],
+      ) as List<_i9.UserDTO>);
+
+  @override
+  int get listenersCount => (super.noSuchMethod(
+        Invocation.getter(#listenersCount),
+        returnValue: 0,
+        returnValueForMissingStub: 0,
+      ) as int);
+
+  @override
+  _i5.Future<void> fetchUsers() => (super.noSuchMethod(
+        Invocation.method(
+          #fetchUsers,
+          [],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  void listenToReactiveValues(List<dynamic>? reactiveValues) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #listenToReactiveValues,
+          [reactiveValues],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void addListener(void Function()? listener) => super.noSuchMethod(
+        Invocation.method(
+          #addListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void removeListener(void Function()? listener) => super.noSuchMethod(
+        Invocation.method(
+          #removeListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void notifyListeners() => super.noSuchMethod(
+        Invocation.method(
+          #notifyListeners,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+}
 
 /// A class which mocks [LocalDataService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLocalDataService extends _i1.Mock implements _i9.LocalDataService {}
+class MockLocalDataService extends _i1.Mock implements _i10.LocalDataService {
+  @override
+  bool get isInit => (super.noSuchMethod(
+        Invocation.getter(#isInit),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  _i5.Future<void> init() => (super.noSuchMethod(
+        Invocation.method(
+          #init,
+          [],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> saveToBox<T>(
+    String? name,
+    String? key,
+    T? data,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveToBox,
+          [
+            name,
+            key,
+            data,
+          ],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<T?> getFromBox<T>(
+    String? name,
+    String? key,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getFromBox,
+          [
+            name,
+            key,
+          ],
+        ),
+        returnValue: _i5.Future<T?>.value(),
+        returnValueForMissingStub: _i5.Future<T?>.value(),
+      ) as _i5.Future<T?>);
+
+  @override
+  _i5.Future<List<T>> getAllFromBox<T>(String? name) => (super.noSuchMethod(
+        Invocation.method(
+          #getAllFromBox,
+          [name],
+        ),
+        returnValue: _i5.Future<List<T>>.value(<T>[]),
+        returnValueForMissingStub: _i5.Future<List<T>>.value(<T>[]),
+      ) as _i5.Future<List<T>>);
+
+  @override
+  _i5.Future<void> deleteFromBox<T>(
+    String? name,
+    String? key,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #deleteFromBox,
+          [
+            name,
+            key,
+          ],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> clearBox<T>(String? name) => (super.noSuchMethod(
+        Invocation.method(
+          #clearBox,
+          [name],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> registerAdapterBox<T>(_i11.TypeAdapter<T>? adapter) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #registerAdapterBox,
+          [adapter],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+}
