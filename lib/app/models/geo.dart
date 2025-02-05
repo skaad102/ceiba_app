@@ -1,5 +1,11 @@
+import 'package:hive/hive.dart';
+part 'geo.g.dart';
+
+@HiveType(typeId: 3)
 class GeoDTO {
+  @HiveField(0)
   String lat;
+  @HiveField(1)
   String lng;
 
   GeoDTO({
